@@ -27,7 +27,8 @@ class LoginController extends Controller
         }
         else{
             if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-                return redirect()->route('account.dashboard');
+                return redirect()->route('home');
+                
             }else{
                 return redirect()->route('account.login')->with('error','Either email or password is incorrect.');
                 
@@ -66,10 +67,8 @@ class LoginController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect()->route('account.login');
+        return redirect()->route('home');
     }
-
-
 
 
 }

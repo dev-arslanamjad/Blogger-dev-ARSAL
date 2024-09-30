@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 
 
@@ -22,17 +22,17 @@ Route::group(['prefix' => 'account'], function () {
     });
     // Authenticate middleware
     Route::group(['middleware' => 'auth'], function () {
-        Route::get('dashboard', [DashboardController::class, 'index'])->name('account.dashboard');
         Route::get('logout', [LoginController::class, 'logout'])->name('account.logout');
     });
 });
+Route::get('dashboard', [DashboardController::class, 'index'])->name('account.dashboard');
 
 
 
 Route::group(['prefix' => 'admin'], function () {
     // Guest middleware for admin
     Route::group(['middleware' => 'admin.guest'], function () {
-        Route::get('login', [AdminLoginController::class, 'index'])->name('admin.login');
+        Route::get('', [AdminLoginController::class, 'index'])->name('admin.login');
         Route::post('login', [AdminLoginController::class, 'authenticate'])->name('admin.authenticate');
     });
     // Authenticate middleware for admin
