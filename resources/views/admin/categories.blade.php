@@ -11,14 +11,14 @@
                 </button>
             </div>
             @endif
-            <div style="display: flex; justify-content: flex-end;">
-                <button class="btn btn-primary" style="margin-left: auto;" data-toggle="modal" data-target="#addBlogModal">Add Category</button>
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#addBlogModal">Add Category</button>
             </div>
         </div>
     </div>
-</section>	
+</section>
 <div class="modal fade" id="addBlogModal" tabindex="-1" role="dialog" aria-labelledby="addBlogModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="addBlogModalLabel">Add New Category</h5>
@@ -48,4 +48,37 @@
         </div>
     </div>
 </div>
+<section>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%;">Serial NO.</th>
+                            <th style="width: 25%;">Title</th>
+                            <th style="width: 40%;">Description</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($categories as $category)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td><b>{{ $category->name }}</b></td>
+                            <td>{{ $category->description }}</td>
+                            <td class="text-right">
+                                <div class="btn-group" role="group">
+                                    <a href="" class="btn btn-sm btn-primary">Edit</a>
+                                    <button type="button" class="btn btn-sm btn-danger delete-blog" data-id="">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection

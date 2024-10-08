@@ -40,7 +40,7 @@
                         <a href="{{route('admin.dashboard')}}"><i class="fa-solid fa-house"></i><span class="nav-label">Dashboard</span> </span></a>
                     </li>
                     <li class="active">
-                        <a href=""><i class="fa-solid fa-user"></i> <span class="nav-label">Users</span> </span></a>
+                        <a href="{{route('admin.user.show')}}"><i class="fa-solid fa-user"></i> <span class="nav-label">Users</span> </span></a>
                     </li>
                     <li class="active">
                         <a href="{{route('admin.blog.show')}}"><i class="fa-brands fa-product-hunt"></i> <span class="nav-label">Blog Posts</span> </span></a>

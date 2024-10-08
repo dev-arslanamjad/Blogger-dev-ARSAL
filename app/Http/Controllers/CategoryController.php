@@ -9,8 +9,9 @@ use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
     public function index()
-    {
-        return view('admin.categories');
+    {   
+        $categories = Category::all();
+        return view('admin.categories', compact('categories'));
     }
 
     public function store(Request $request)

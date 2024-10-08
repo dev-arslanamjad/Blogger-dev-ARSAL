@@ -11,8 +11,8 @@
                 </button>
             </div>
             @endif
-            <div style="display: flex; justify-content: flex-end;">
-                <button class="btn btn-primary" style="margin-left: auto;" data-toggle="modal" data-target="#addBlogModal">Add New Blog</button>
+            <div class="d-flex justify-content-end mb-3">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#addBlogModal">Add New Blog</button>
             </div>
         </div>
     </div>
@@ -20,44 +20,46 @@
 <section>
     <div class="container-fluid">
         <div class="container">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Serial NO.</th>
-                        <th>Title</th>
-                        <th>Images</th>
-                        <th>Created At</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($blogs as $blog)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td><b>{{ $blog->title }}</b></td>
-                        <td>
-                            @if (!empty(json_decode($blog->images)))
-                            <img src="{{ asset(json_decode($blog->images)[0]) }}" alt="{{ $blog->title }}" style="width: 60px; height: auto;">
-                            @else
-                            No image available
-                            @endif
-                        </td>
-                        <td>{{ $blog->created_at->format('Y-m-d H:i:s') }}</td>
-                        <td>
-                            <a href="" class="btn btn-sm btn-primary">Edit</a>
-                            <button type="button" class="btn btn-sm btn-danger delete-blog" data-id="{{ $blog->id }}">Delete</button>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Serial NO.</th>
+                            <th>Title</th>
+                            <th>Image</th>
+                            <!-- <th>Created At</th> -->
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($blogs as $blog)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td><b>{{ $blog->title }}</b></td>
+                            <td>
+                                @if (!empty(json_decode($blog->images)))
+                                <img src="{{ asset(json_decode($blog->images)[0]) }}" alt="{{ $blog->title }}" class="img-fluid" style="max-width: 60px;">
+                                @else
+                                No image available
+                                @endif
+                            </td>
+                            <!-- <td>{{ $blog->created_at->format('d-m-y') }}</td> -->
+                            <td>
+                                <a href="" class="btn btn-sm btn-primary mb-1">Edit</a>
+                                <button type="button" class="btn btn-sm btn-danger delete-blog mb-1" data-id="{{ $blog->id }}">Delete</button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- Modal -->
 <div class="modal fade" id="addBlogModal" tabindex="-1" role="dialog" aria-labelledby="addBlogModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="addBlogModalLabel">Add New Blog</h5>

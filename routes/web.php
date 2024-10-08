@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\admin\LoginController as AdminLoginController;
+use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
@@ -54,6 +55,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('blog/store', [BlogController::class, 'store'])->name('admin.blog.store');
         Route::post('blog/delete', [BlogController::class, 'delete'])->name('admin.blog.delete');
         Route::get('categories', [CategoryController::class, 'index'])->name('admin.category.show');
+        Route::get('users', [UserController::class, 'index'])->name('admin.user.show');
         Route::post('category/store', [CategoryController::class, 'store'])->name('admin.category.store');
     });
 });
