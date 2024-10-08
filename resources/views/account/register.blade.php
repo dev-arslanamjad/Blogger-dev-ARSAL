@@ -1,9 +1,9 @@
 @extends('layouts.main')
 @section('content')
-<section class=" p-3 p-md-4 p-xl-5">
+<section class="p-3 p-md-4 p-xl-5">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5" style="width: 40% !important;">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5">
                 <div class="card border border-light-subtle rounded-4">
                     <div class="card-body p-3 p-md-4 p-xl-5">
                         <div class="row">
@@ -19,8 +19,8 @@
 
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <input type="text" value="{{old('username')}}" class="form-control @error('username') is-invalid @enderror" name="username" id="username" placeholder="Username">
                                         <label for="username" class="form-label">Username</label>
+                                        <input type="text" value="{{old('username')}}" class="form-control @error('username') is-invalid @enderror" name="username" id="username" placeholder="Username">
                                         @error('username')
                                         <p class="invalid-feedback">{{ $message }}</p>
                                         @enderror
@@ -29,8 +29,8 @@
 
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <input type="text" value="{{old('email')}}" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="name@example.com">
                                         <label for="email" class="form-label">Email</label>
+                                        <input type="text" value="{{old('email')}}" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="name@example.com">
                                         @error('email')
                                         <p class="invalid-feedback">{{ $message }}</p>
                                         @enderror
@@ -38,8 +38,8 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" value="" placeholder="Password">
                                         <label for="password" class="form-label">Password</label>
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" value="" placeholder="Password">
                                         @error('password')
                                         <p class="invalid-feedback">{{ $message }}</p>
                                         @enderror
@@ -47,8 +47,8 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="password_confirmation" value="" placeholder="Confirm Password">
                                         <label for="password" class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="password_confirmation" value="" placeholder="Confirm Password">
                                         @error('password_confirmation')
                                         <p class="invalid-feedback">{{ $message }}</p>
                                         @enderror

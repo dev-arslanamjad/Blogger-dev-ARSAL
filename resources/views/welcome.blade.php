@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-lg-7 text-center">
-                <h2 class="heading">Trending</h2>
+                <h2 class="heading">Trending Blogs</h2>
             </div>
         </div>
         <div class="row">
@@ -13,147 +13,42 @@
 
                 <div class="posts-slide-wrap">
                     <div class="posts-slide" id="posts-slide">
-
+                        @foreach ($blogs as $blog)
                         <div class="item">
                             <div class="post-entry d-lg-flex">
-
                                 <div class="me-lg-5 thumbnail mb-4 mb-lg-0">
-                                    <a href="single.html">
-                                        <img src="{{ asset('assets/images/post_lg_1.jpg') }}" alt="Image" class="img-fluid">
+                                    <a href="{{route('blog.details', ['slug' => $blog->slug])}}">
+                                        @php
+                                        $images = json_decode($blog->images, true);
+                                        $firstImage = isset($images[0]) ? $images[0] : 'default.jpg';
+                                        @endphp
+                                        <img src="{{ asset('' . $firstImage) }}" alt="Image" class="img-fluid">
                                     </a>
                                 </div>
-
                                 <div class="content align-self-center">
                                     <div class="post-meta mb-3">
-                                        <a href="#" class="category">Business</a>, <a href="#" class="category">Travel</a> —
-                                        <span class="date">July 2, 2020</span>
-
+                                        <a href="#" class="category">{{ $categories->where('id', $blog->category)->first()->name }}</a> —
+                                        <span class="date">{{ $blog->created_at->format('d-m-y') }}</span>
                                     </div>
-                                    <h2 class="heading"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-
-                                    <a href="#" class="post-author d-flex align-items-center">
-                                        <div class="author-pic">
-                                            <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image">
+                                    <h2 class="heading"><a href="{{route('blog.details', ['slug' => $blog->slug])}}">{{ $blog->title }}</a></h2>
+                                    <p>{{ $blog->description }}</p>
+                                    <p>{{ Str::limit($blog->content, 200) }}</p>
+                                    <a href="" class="post-author d-flex align-items-center">
+                                        <div class="author-pic d-flex">
+                                            @php
+                                            $images = json_decode($blog->images, true);
+                                            @endphp
+                                            @foreach ($images as $image)
+                                            <img src="{{ asset('' . $image) }}" alt="Image">
+                                            @endforeach
                                         </div>
-                                        <div class="text">
-                                            <strong>Sergy Campbell</strong>
-                                            <span>CEO and Founder</span>
-                                        </div>
-
                                     </a>
-
-
                                 </div>
                             </div>
                         </div>
+                        @endforeach
+
                         <!-- END .item -->
-
-                        <div class="item">
-                            <div class="post-entry d-lg-flex">
-
-                                <div class="me-lg-5 thumbnail mb-4 mb-lg-0">
-                                    <a href="single.html">
-                                        <img src="{{ asset('assets/images/post_lg_2.jpg') }}" alt="Image" class="img-fluid">
-                                    </a>
-                                </div>
-
-                                <div class="content align-self-center">
-                                    <div class="post-meta mb-3">
-                                        <a href="#" class="category">Business</a>, <a href="#" class="category">Travel</a> —
-                                        <span class="date">July 2, 2020</span>
-
-                                    </div>
-                                    <h2 class="heading"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-
-                                    <a href="#" class="post-author d-flex align-items-center">
-                                        <div class="author-pic">
-                                            <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image">
-                                        </div>
-                                        <div class="text">
-                                            <strong>Sergy Campbell</strong>
-                                            <span>CEO and Founder</span>
-                                        </div>
-
-                                    </a>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END .item -->
-
-                        <div class="item">
-                            <div class="post-entry d-lg-flex">
-
-                                <div class="me-lg-5 thumbnail mb-4 mb-lg-0">
-                                    <a href="single.html">
-                                        <img src="{{ asset('assets/images/post_lg_3.jpg') }}" alt="Image" class="img-fluid">
-                                    </a>
-                                </div>
-
-                                <div class="content align-self-center">
-                                    <div class="post-meta mb-3">
-                                        <a href="#" class="category">Business</a>, <a href="#" class="category">Travel</a> —
-                                        <span class="date">July 2, 2020</span>
-
-                                    </div>
-                                    <h2 class="heading"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-
-                                    <a href="#" class="post-author d-flex align-items-center">
-                                        <div class="author-pic">
-                                            <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image">
-                                        </div>
-                                        <div class="text">
-                                            <strong>Sergy Campbell</strong>
-                                            <span>CEO and Founder</span>
-                                        </div>
-
-                                    </a>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END .item -->
-
-                        <div class="item">
-                            <div class="post-entry d-lg-flex">
-
-                                <div class="me-lg-5 thumbnail mb-4 mb-lg-0">
-                                    <a href="single.html">
-                                        <img src="{{ asset('assets/images/post_lg_4.jpg') }}" alt="Image" class="img-fluid">
-                                    </a>
-                                </div>
-
-                                <div class="content align-self-center">
-                                    <div class="post-meta mb-3">
-                                        <a href="#" class="category">Business</a>, <a href="#" class="category">Travel</a> —
-                                        <span class="date">July 2, 2020</span>
-
-                                    </div>
-                                    <h2 class="heading"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-
-                                    <a href="#" class="post-author d-flex align-items-center">
-                                        <div class="author-pic">
-                                            <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image">
-                                        </div>
-                                        <div class="text">
-                                            <strong>Sergy Campbell</strong>
-                                            <span>CEO and Founder</span>
-                                        </div>
-
-                                    </a>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END .item -->
-
 
 
                     </div>
@@ -169,197 +64,30 @@
 <div class="section">
     <div class="container">
         <div class="row g-5">
+            @foreach ($blogs as $blog)
             <div class="col-lg-4">
                 <div class="post-entry d-block small-post-entry-v">
                     <div class="thumbnail">
-                        <a href="single.html">
-                            <img src="{{ asset('assets/images/img_2.jpg') }}" alt="Image" class="img-fluid">
+                        <a href="">
+                            @php
+                            $images = json_decode($blog->images, true);
+                            $firstImage = isset($images[0]) ? $images[0] : 'default.jpg';
+                            @endphp
+                            <img src="{{ asset('' . $firstImage) }}" alt="Image" style="width: 50%;">
                         </a>
                     </div>
                     <div class="content">
                         <div class="post-meta mb-1">
-                            <a href="#" class="category">Business</a>, <a href="#" class="category">Travel</a> —
-                            <span class="date">July 2, 2020</span>
+                            <a href="#" class="category">{{ $categories->where('id', $blog->category)->first()->name }}</a> —
+                            <span class="date">{{ $blog->created_at->format('d-m-y') }}</span>
 
                         </div>
-                        <h2 class="heading mb-3"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-
-                        <a href="#" class="post-author d-flex align-items-center">
-                            <div class="author-pic">
-                                <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image">
-                            </div>
-                            <div class="text">
-                                <strong>Sergy Campbell</strong>
-                                <span>CEO and Founder</span>
-                            </div>
-
-                        </a>
-
-
+                        <h2 class="heading mb-3"><a href="">{{ $blog->title }}</a></h2>
+                        <p>{{ $blog->description }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="post-entry d-block small-post-entry-v">
-                    <div class="thumbnail">
-                        <a href="single.html">
-                            <img src="{{ asset('assets/images/img_3.jpg') }}" alt="Image" class="img-fluid">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <div class="post-meta mb-1">
-                            <a href="#" class="category">Business</a>, <a href="#" class="category">Travel</a> —
-                            <span class="date">July 2, 2020</span>
-
-                        </div>
-                        <h2 class="heading mb-3"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-
-                        <a href="#" class="post-author d-flex align-items-center">
-                            <div class="author-pic">
-                                <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image">
-                            </div>
-                            <div class="text">
-                                <strong>Sergy Campbell</strong>
-                                <span>CEO and Founder</span>
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="post-entry d-block small-post-entry-v">
-                    <div class="thumbnail">
-                        <a href="single.html">
-                            <img src="{{ asset('assets/images/img_4.jpg') }}" alt="Image" class="img-fluid">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <div class="post-meta mb-1">
-                            <a href="#" class="category">Business</a>, <a href="#" class="category">Travel</a> —
-                            <span class="date">July 2, 2020</span>
-
-                        </div>
-                        <h2 class="heading mb-3"><a href="#">Your most unhappy customers are your greatest source of learning.</a></h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-
-                        <a href="#" class="post-author d-flex align-items-center">
-                            <div class="author-pic">
-                                <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image">
-                            </div>
-                            <div class="text">
-                                <strong>Sergy Campbell</strong>
-                                <span>CEO and Founder</span>
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-lg-4">
-                <div class="post-entry d-block small-post-entry-v">
-                    <div class="thumbnail">
-                        <a href="single.html">
-                            <img src="{{ asset('assets/images/img_4.jpg') }}" alt="Image" class="img-fluid">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <div class="post-meta mb-1">
-                            <a href="#" class="category">Business</a>, <a href="#" class="category">Travel</a> —
-                            <span class="date">July 2, 2020</span>
-
-                        </div>
-                        <h2 class="heading mb-3"><a href="#">Your most unhappy customers are your greatest source of learning.</a></h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-
-                        <a href="#" class="post-author d-flex align-items-center">
-                            <div class="author-pic">
-                                <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image">
-                            </div>
-                            <div class="text">
-                                <strong>Sergy Campbell</strong>
-                                <span>CEO and Founder</span>
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="post-entry d-block small-post-entry-v">
-                    <div class="thumbnail">
-                        <a href="single.html">
-                            <img src="{{ asset('assets/images/img_5.jpg') }}" alt="Image" class="img-fluid">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <div class="post-meta mb-1">
-                            <a href="#" class="category">Business</a>, <a href="#" class="category">Travel</a> —
-                            <span class="date">July 2, 2020</span>
-
-                        </div>
-                        <h2 class="heading mb-3"><a href="#">Your most unhappy customers are your greatest source of learning.</a></h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-
-                        <a href="#" class="post-author d-flex align-items-center">
-                            <div class="author-pic">
-                                <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image">
-                            </div>
-                            <div class="text">
-                                <strong>Sergy Campbell</strong>
-                                <span>CEO and Founder</span>
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="post-entry d-block small-post-entry-v">
-                    <div class="thumbnail">
-                        <a href="single.html">
-                            <img src="{{ asset('assets/images/img_6.jpg') }}" alt="Image" class="img-fluid">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <div class="post-meta mb-1">
-                            <a href="#" class="category">Business</a>, <a href="#" class="category">Travel</a> —
-                            <span class="date">July 2, 2020</span>
-
-                        </div>
-                        <h2 class="heading mb-3"><a href="#">Your most unhappy customers are your greatest source of learning.</a></h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-
-                        <a href="#" class="post-author d-flex align-items-center">
-                            <div class="author-pic">
-                                <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image">
-                            </div>
-                            <div class="text">
-                                <strong>Sergy Campbell</strong>
-                                <span>CEO and Founder</span>
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
         </div>
     </div>
 </div>
@@ -370,7 +98,7 @@
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-lg-7 text-center">
-                <h2 class="heading">Most Popular Posts</h2>
+                <h2 class="heading">Latest Blogs</h2>
             </div>
         </div>
     </div>
@@ -382,12 +110,17 @@
             <span class="next" data-controls="next">Next</span>
         </div>
         <div class="most-popular-slider" id="most-popular-center">
-
+            @foreach ($blogs as $blog)
             <div class="item">
                 <div class="post-entry d-block small-post-entry-v">
                     <div class="thumbnail">
-                        <a href="single.html">
-                            <img src="{{ asset('assets/images/img_7.jpg') }}" alt="Image" class="img-fluid">
+                        <a href="">
+                            @php
+                                $images = json_decode($blog->images, true);
+                                $firstImage = isset($images[0]) ? $images[0] : 'default.jpg';
+                                
+                            @endphp
+                            <img src="{{ asset('' . $firstImage) }}" alt="Image" class="img-fluid">
                         </a>
                     </div>
                     <div class="content">
@@ -396,8 +129,8 @@
                             <span class="date">July 2, 2020</span>
 
                         </div>
-                        <h2 class="heading mb-3"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                        <h2 class="heading mb-3"><a href="">{{$blog->title}}</a></h2>
+                        <p>{{$blog->description}}</p>
 
                         <a href="#" class="post-author d-flex align-items-center">
                             <div class="author-pic">
@@ -414,166 +147,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="item">
-                <div class="post-entry d-block small-post-entry-v">
-                    <div class="thumbnail">
-                        <a href="single.html">
-                            <img src="{{ asset('assets/images/img_2.jpg') }}" alt="Image" class="img-fluid">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <div class="post-meta mb-1">
-                            <a href="#" class="category">Business</a>, <a href="#" class="category">Travel</a> —
-                            <span class="date">July 2, 2020</span>
-
-                        </div>
-                        <h2 class="heading mb-3"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-
-                        <a href="#" class="post-author d-flex align-items-center">
-                            <div class="author-pic">
-                                <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image">
-                            </div>
-                            <div class="text">
-                                <strong>Sergy Campbell</strong>
-                                <span>CEO and Founder</span>
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="post-entry d-block small-post-entry-v">
-                    <div class="thumbnail">
-                        <a href="single.html">
-                            <img src="{{ asset('assets/images/img_3.jpg') }}" alt="Image" class="img-fluid">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <div class="post-meta mb-1">
-                            <a href="#" class="category">Business</a>, <a href="#" class="category">Travel</a> —
-                            <span class="date">July 2, 2020</span>
-
-                        </div>
-                        <h2 class="heading mb-3"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-
-                        <a href="#" class="post-author d-flex align-items-center">
-                            <div class="author-pic">
-                                <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image">
-                            </div>
-                            <div class="text">
-                                <strong>Sergy Campbell</strong>
-                                <span>CEO and Founder</span>
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="post-entry d-block small-post-entry-v">
-                    <div class="thumbnail">
-                        <a href="single.html">
-                            <img src="{{ asset('assets/images/img_4.jpg') }}" alt="Image" class="img-fluid">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <div class="post-meta mb-1">
-                            <a href="#" class="category">Business</a>, <a href="#" class="category">Travel</a> —
-                            <span class="date">July 2, 2020</span>
-
-                        </div>
-                        <h2 class="heading mb-3"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-
-                        <a href="#" class="post-author d-flex align-items-center">
-                            <div class="author-pic">
-                                <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image">
-                            </div>
-                            <div class="text">
-                                <strong>Sergy Campbell</strong>
-                                <span>CEO and Founder</span>
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="post-entry d-block small-post-entry-v">
-                    <div class="thumbnail">
-                        <a href="single.html">
-                            <img src="{{ asset('assets/images/img_5.jpg') }}" alt="Image" class="img-fluid">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <div class="post-meta mb-1">
-                            <a href="#" class="category">Business</a>, <a href="#" class="category">Travel</a> —
-                            <span class="date">July 2, 2020</span>
-
-                        </div>
-                        <h2 class="heading mb-3"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-
-                        <a href="#" class="post-author d-flex align-items-center">
-                            <div class="author-pic">
-                                <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image">
-                            </div>
-                            <div class="text">
-                                <strong>Sergy Campbell</strong>
-                                <span>CEO and Founder</span>
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="post-entry d-block small-post-entry-v">
-                    <div class="thumbnail">
-                        <a href="single.html">
-                            <img src="{{ asset('assets/images/img_6.jpg') }}" alt="Image" class="img-fluid">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <div class="post-meta mb-1">
-                            <a href="#" class="category">Business</a>, <a href="#" class="category">Travel</a> —
-                            <span class="date">July 2, 2020</span>
-
-                        </div>
-                        <h2 class="heading mb-3"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-
-                        <a href="#" class="post-author d-flex align-items-center">
-                            <div class="author-pic">
-                                <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image">
-                            </div>
-                            <div class="text">
-                                <strong>Sergy Campbell</strong>
-                                <span>CEO and Founder</span>
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
         </div>
     </div>
@@ -605,7 +179,7 @@
                                     <span class="date">July 2, 2020</span>
 
                                 </div>
-                                <h2 class="heading"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
+                                <h2 class="heading"><a href="">Your most unhappy customers are your greatest source of learning.</a></h2>
 
                                 <a href="#" class="post-author d-flex align-items-center">
                                     <div class="author-pic">
@@ -634,7 +208,7 @@
                                     <span class="date">July 2, 2020</span>
 
                                 </div>
-                                <h2 class="heading"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
+                                <h2 class="heading"><a href="">Your most unhappy customers are your greatest source of learning.</a></h2>
 
                                 <a href="#" class="post-author d-flex align-items-center">
                                     <div class="author-pic">
@@ -663,7 +237,7 @@
                                     <span class="date">July 2, 2020</span>
 
                                 </div>
-                                <h2 class="heading"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
+                                <h2 class="heading"><a href="">Your most unhappy customers are your greatest source of learning.</a></h2>
 
                                 <a href="#" class="post-author d-flex align-items-center">
                                     <div class="author-pic">
@@ -673,15 +247,10 @@
                                         <strong>Sergy Campbell</strong>
                                         <span>Author, 26 published post</span>
                                     </div>
-
                                 </a>
-
-
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
             <div class="col-lg-6">
@@ -702,7 +271,7 @@
                                     <span class="date">July 2, 2020</span>
 
                                 </div>
-                                <h2 class="heading"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
+                                <h2 class="heading"><a href="">Your most unhappy customers are your greatest source of learning.</a></h2>
 
                                 <a href="#" class="post-author d-flex align-items-center">
                                     <div class="author-pic">
@@ -731,7 +300,7 @@
                                     <span class="date">July 2, 2020</span>
 
                                 </div>
-                                <h2 class="heading"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
+                                <h2 class="heading"><a href="">Your most unhappy customers are your greatest source of learning.</a></h2>
 
                                 <a href="#" class="post-author d-flex align-items-center">
                                     <div class="author-pic">
@@ -760,7 +329,7 @@
                                     <span class="date">July 2, 2020</span>
 
                                 </div>
-                                <h2 class="heading"><a href="single.html">Your most unhappy customers are your greatest source of learning.</a></h2>
+                                <h2 class="heading"><a href="">Your most unhappy customers are your greatest source of learning.</a></h2>
 
                                 <a href="#" class="post-author d-flex align-items-center">
                                     <div class="author-pic">

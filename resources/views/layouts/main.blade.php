@@ -1,10 +1,8 @@
 <!doctype html>
 <html lang="en">
 
-<!-- Mirrored from preview.colorlib.com/theme/magdesign/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 30 Sep 2024 16:07:02 GMT -->
-
 <head>
-    <!-- Required meta tags -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -42,10 +40,12 @@
                         <a href="{{route('account.dashboard')}}" class="logo m-0 text-uppercase">BLOGGER</a>
                     </div>
                     <div class="col-md-3 order-3 order-md-1">
-                        <form action="#" class="search-form">
+
+                        <form class="search-form" action="{{ route('blog.search') }}" method="GET">
                             <span class="icon-search2"></span>
-                            <input type="search" class="form-control" placeholder="Search...">
+                            <input type="search" name="search" class="form-control" placeholder="Search...">
                         </form>
+
                     </div>
 
                     <div class="col-md-3 text-end order-2 order-md-3 mb-3 mb-md-0">
@@ -57,7 +57,7 @@
                                 @if(Auth::check())
                                 <i class="fa fa-user"></i>
                                 <span><b>{{ Auth::user()->name }}</b></span>
-                                
+
                                 @else
                                 <li><a href="{{route('account.login')}}" class="btn btn-sm btn-primary">Login</a></li>
                                 @endif
@@ -75,25 +75,14 @@
                 <ul class="js-clone-nav d-none d-lg-inline-none text-start site-menu float-end">
                     <li class="active"><a href="#">Home</a></li>
                     <li class="has-children">
-                        <a href="categories.html">Categories</a>
+                        <a>Categories</a>
                         <ul class="dropdown">
-                            <li><a href="#">Travel</a></li>
-                            <li><a href="#">Food</a></li>
-                            <li><a href="#">Technology</a></li>
-                            <li><a href="#">Business</a></li>
-                            <li class="has-children">
-                                <a href="#">Dropdown</a>
-                                <ul class="dropdown">
-                                    <li><a href="#">Sub Menu One</a></li>
-                                    <li><a href="#">Sub Menu Two</a></li>
-                                    <li><a href="#">Sub Menu Three</a></li>
-                                </ul>
-                            </li>
+                            @foreach ($categories as $category)
+                            <li><a href="{{route('account.category.blogs', ['id' => $category->id])}}">{{$category->name}}</a></li>
+                            @endforeach
                         </ul>
                     </li>
-                    <li><a href="#">Travel</a></li>
-                    <li><a href="#">Food</a></li>
-                    <li><a href="#">Technology</a></li>
+                    <!-- <li><a href="#">Travel</a></li> -->
                     @if(Auth::check())
                     <li><a href="{{ route('account.logout') }}" class="btn btn-sm btn-outline-primary me-2">Logout</a></li>
                     @else
@@ -119,7 +108,7 @@
             <form action="#" class="row">
                 <div class="col-md-8">
                     <div class="mb-3 mb-md-0">
-                        <input type="email" class="form-control" placeholder="Enter your email">
+                        <input type="email" value="{{ Auth::check() ? Auth::user()->email : '' }}" class="form-control" placeholder="Enter your email">
                     </div>
                 </div>
                 <div class="col-md-4 d-grid">
@@ -152,7 +141,7 @@
                                 document.write(new Date().getFullYear());
                             </script> All rights reserved | This
                             template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a
-                                href="https://colorlib.com/" target="_blank" rel="nofollow noopener">Colorlib</a>
+                                href="" rel="nofollow noopener">dev-ARSAL </a>
                         </p>
 
                         <div class="d-block">
@@ -184,7 +173,7 @@
         <script src="{{ asset('assets/js/counter.js') }}"></script>
         <script src="{{ asset('assets/js/custom.js') }}"></script>
 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
+
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -203,6 +192,5 @@
             crossorigin="anonymous"></script>
 </body>
 
-<!-- Mirrored from preview.colorlib.com/theme/magdesign/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 30 Sep 2024 16:07:27 GMT -->
 
 </html>

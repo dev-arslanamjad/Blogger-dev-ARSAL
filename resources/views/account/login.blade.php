@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class=" col-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5" style="width: 40% !important;">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5">
             <div class="card border border-light-subtle rounded-4">
                 <div class="card-body p-3 p-md-4 p-xl-5">
                     <div class="row">

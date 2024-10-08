@@ -37,16 +37,16 @@
                         </div>
                     </li>
                     <li class="active">
-                        <a href=""><i class="fa-solid fa-house"></i><span class="nav-label">Dashboard</span> </span></a>
+                        <a href="{{route('admin.dashboard')}}"><i class="fa-solid fa-house"></i><span class="nav-label">Dashboard</span> </span></a>
                     </li>
                     <li class="active">
                         <a href=""><i class="fa-solid fa-user"></i> <span class="nav-label">Users</span> </span></a>
                     </li>
                     <li class="active">
-                        <a href=""><i class="fa-brands fa-product-hunt"></i> <span class="nav-label">Blog Posts</span> </span></a>
+                        <a href="{{route('admin.blog.show')}}"><i class="fa-brands fa-product-hunt"></i> <span class="nav-label">Blog Posts</span> </span></a>
                     </li>
                     <li class="active">
-                        <a href=""><i class="fa-solid fa-layer-group"></i> <span class="nav-label">Categories   </span> </span></a>
+                        <a href="{{route('admin.category.show')}}"><i class="fa-solid fa-layer-group"></i> <span class="nav-label">Categories </span> </span></a>
                     </li>
                 </ul>
 
@@ -81,6 +81,8 @@
         </div>
 
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Mainly scripts -->
