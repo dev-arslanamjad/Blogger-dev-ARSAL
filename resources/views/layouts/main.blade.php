@@ -108,7 +108,7 @@
             <form action="#" class="row">
                 <div class="col-md-8">
                     <div class="mb-3 mb-md-0">
-                        <input type="email" value="{{ Auth::check() ? Auth::user()->email : '' }}" class="form-control" placeholder="Enter your email">
+                        <input type="email" value="{{ Auth::check() ? Auth::user()->email : '' }}" class="form-control" placeholder="Enter your email" readonly> 
                     </div>
                 </div>
                 <div class="col-md-4 d-grid">

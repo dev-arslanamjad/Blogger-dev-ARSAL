@@ -33,9 +33,9 @@ Route::group(['prefix' => 'account'], function () {
         Route::get('logout', [LoginController::class, 'logout'])->name('account.logout');
         Route::get('dashboard', [DashboardController::class, 'index'])->name('account.dashboard');
         Route::get('category/blogs/{id}', [BlogController::class, 'categoryblog'])->name('account.category.blogs');
+        Route::get('blogs/search', [BlogController::class, 'search'])->name('blog.search');
         Route::get('blogs/{slug}', [BlogController::class, 'blogdetails'])->name('blog.details');
         
-        Route::get('blogs/search', [BlogController::class, 'search'])->name('blog.search');
     });
 });
 
