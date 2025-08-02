@@ -1,6 +1,33 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Blogger - A Laravel Blogging Platform
 
-## Blogger  A Blogging Site by dev-ARSAL
+> A Platform made using frontend of Bootstrap and Blade templates using Mysql Database.
 
-## Features
-You will be Updated after Compilation of the Site
+## Features ✨
+- User Multi-Authentication
+- Blog creation. Blog Views
+- Attractive UIs
+- Blog Deletion
+- Commenting
+- Category Filtering
+
+## Installation 🛠️
+```bash
+composer install
+```
+
+## Usage 💡
+it is easy to use clone this repo safely add inject sql db Run PHP ARTISAN SERVE and you are good to go
+
+## Tech Stack 🛠️
+- HTML
+- CSS
+- Bootstrap
+- Blade Template
+- Javascript
+- Jquery
+- PHP
+- Laravel
+- MySql Database
+
+## License 📄
+This project is licensed under the MIT License.
