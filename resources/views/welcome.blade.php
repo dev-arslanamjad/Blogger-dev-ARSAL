@@ -38,9 +38,12 @@
                                             @php
                                             $images = json_decode($blog->images, true);
                                             @endphp
-                                            @foreach ($images as $image)
-                                            <img src="{{ asset('' . $image) }}" alt="Image" style="width: 50px; height: 50px; object-fit: cover; margin-right: 5px;">
-                                            @endforeach
+                                            @if (!empty($images) && is_array($images))
+    @foreach ($images as $image)
+        <img src="{{ asset($image) }}" alt="Image" style="width: 50px; height: 50px; object-fit: cover; margin-right: 5px;">
+    @endforeach
+@endif
+
                                         </div>
                                     </a>
                                 </div>
